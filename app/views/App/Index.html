@@ -1,0 +1,36 @@
+{{set . "title" "Home"}}
+{{template "header.html" .}}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div clas = "page-header">
+        <center><h1> Asteroid Search </h1></center>
+        </div>
+    </div>
+    <div class= "panel-body">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4"><center>
+        <div class="row">
+          <p class="text-info">
+             search for Asteroids based on their closest approach date to Earth
+          </p>
+        </div>    
+        <div class = "row">
+          <div class="span6">
+           {{template "flash.html" .}}
+          </div>
+        </div>
+        <div class="row">
+        <form action="/App/Nasa" method="GET">
+          {{with $field := field "startdate" .}}
+          <div> Enter Date : <input type="date" name="{{$field.Name}}" value="{{$field.Flash}}"/><span class="glyphicon glyphicon-search"></span></div><br/>
+          {{end}}
+        <input type="submit" class="btn btn-info" value="Get Data" />
+        </form></center>
+     </div>
+     <div class="col-sm-4"/></div>
+    </div>
+  </div>
+</div>
+
+{{template "footer.html" .}}
